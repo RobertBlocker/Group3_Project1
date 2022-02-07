@@ -1,4 +1,5 @@
 package team3Polynomials;
+import java.util.*;
 
 public class team3Polynomials {
 
@@ -11,6 +12,48 @@ public class team3Polynomials {
 			System.out.println(it.next().toString());
 		}
 		System.out.println();
-	}
+		
+		
+		
+		String option = "e";
+		System.out.println("WELCOME TO POLYNOMIAL ADDITION CALCULATOR");
+		System.out.println();
+		
+		Scanner console = new Scanner(System.in);
+		
+		String poly1 = "";
+		String poly2 = "";
+		
+		while (option.charAt(0) != 'q') {
+			System.out.println("MENU");
+			System.out.println("f - Enter first polynomial");
+	        System.out.println("s - Enter second polynomial");
+	        System.out.println("a - Add polynomials");
+	        System.out.println("r - Show results");
+	        System.out.println("q - Quit");
+	        System.out.println("");
+	        System.out.println("Choose an option: ");
+			option = console.next();
+			
+			if (option.charAt(0) == 'f') {
+				System.out.println("Enter first polynomial: ");
+				poly1 = console.next();
+				
+			}
+			if (option.charAt(0) == 's') {
+				System.out.println("Enter second polynomial: ");
+				poly2 = console.next();
+			}
+			
+			if (option.charAt(0) == 'a') {
+				System.out.println("Adding polynomials");
+			}
+			if (option.charAt(0) == 'r') {
+				System.out.println("added polys here");
+			}
+			System.out.println();
+		}//end while loop
+		System.out.println("Have a nice day, PROGRAM TERMINATED");
+	}//end main
 
-}
+}//end class

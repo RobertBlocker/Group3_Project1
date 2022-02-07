@@ -1,0 +1,29 @@
+if (option.charAt(0) == 'f') {
+				System.out.println("Enter first polynomial: ");
+				poly1 = console.next();
+				int count = 0;
+				boolean minus = true;
+				String exponent = "";
+				for (int i = 0; i < poly1.length(); i++) {
+					if (poly1.charAt(i) == 'x') {
+						if (poly1.charAt(i+1) == '^') {
+							if (poly1.charAt(i+2) == '-') {
+								minus = true; 
+							}
+							else {
+								int q = 0;
+								if (minus) { q = i + 3;  }
+								else { q = i + 2; }
+								//loop that finds the exponent until the character is + or -
+								while (!(poly1.charAt(q) == '+') && !(poly1.charAt(q) == '-')) {
+									exponent += poly1.charAt(q);
+									q++;
+									System.out.println(exponent);
+								}
+								
+							}
+						}
+						
+					}
+				}
+			}

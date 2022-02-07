@@ -1,0 +1,16 @@
+package team3Polynomials;
+
+public class team3Polynomials {
+
+	public static void main(String[] args) {
+		Linked_List<String> list = new Linked_List<>();
+		list.addFirst("abc");
+		Iterator<String> it = list.iterator();
+
+		while (it.hasNext()) {
+			System.out.println(it.next().toString());
+		}
+		System.out.println();
+	}
+
+}

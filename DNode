@@ -1,8 +1,20 @@
 package team3Polynomials;
 
+import java.lang.*;
+
+
 /** A doubly-linked list node */
-public class DNode<T> {
+public class DNode<T> implements Comparable<T>{
     public T data;
     public DNode<T> next, prev;
     public DNode(T value) { data = value; }
+    
+    
+    
+    @Override
+    public int compareTo(T data) {
+    	return 0;
+    }
+    
+    
 }

@@ -4,6 +4,11 @@ import java.util.*;
 public class team3Polynomials {
 
 	public static void main(String[] args) {
+		Linked_List<String> list = new Linked_List<>();
+		
+
+		System.out.println();
+	
 		String option = "e";
 		System.out.println("WELCOME TO POLYNOMIAL ADDITION CALCULATOR");
 		System.out.println();
@@ -36,8 +41,10 @@ public class team3Polynomials {
 					if (i > 0 && !(coefficient == "") && (poly1.charAt(i) == '+' || poly1.charAt(i) == '-')) {
 						if (coefficient.equals("-")) { coefficient = "-1"; }
 						if (coefficient.equals("+") || coefficient.equals("")) { coefficient = "1"; }
+						exponent = "5000";
 						System.out.println(Integer.parseInt(coefficient));
-						System.out.println("null");
+						list.addLast(Integer.parseInt(coefficient) + "@" + Integer.parseInt(exponent));
+						System.out.println("5000");
 						coefficient = "";
 					}
 					//if the current character is not x, it is part of the coefficient
@@ -48,8 +55,10 @@ public class team3Polynomials {
 					if (!(poly1.charAt(i) == 'x') && i+1 == poly1.length()) { 
 						if (coefficient.equals("-")) { coefficient = "-1"; }
 						if (coefficient.equals("+") || coefficient.equals("")) { coefficient = "1"; }
+						exponent = "5000";
 						System.out.println(Integer.parseInt(coefficient));
-						System.out.println("null");
+						list.addLast(Integer.parseInt(coefficient) + "@" + Integer.parseInt(exponent));
+						System.out.println("5000");
 						coefficient = "";
 					}
 					
@@ -62,11 +71,12 @@ public class team3Polynomials {
 							if (coefficient.equals("+") || coefficient.equals("")) { coefficient = "1"; }
 							if (exponent.equals("0")) {
 								coefficient = "1";
-								exponent = null;
+								exponent = "5000";
 							}
 							if (!(coefficient.equals("0"))) { 
 								System.out.println(Integer.parseInt(coefficient));
 								System.out.println(exponent);
+								list.addLast(Integer.parseInt(coefficient) + "@" + Integer.parseInt(exponent));
 							}
 							coefficient = "";
 							exponent = "";
@@ -95,11 +105,12 @@ public class team3Polynomials {
 							if (coefficient.equals("+") || coefficient.equals("")) { coefficient = "1"; }
 							if (exponent.equals("0")) {
 								coefficient = "1";
-								exponent = null;
+								exponent = "5000";
 							}
 							if (!(coefficient.equals("0"))) { 
 								System.out.println(Integer.parseInt(coefficient));
 								System.out.println(exponent);
+								list.addLast(Integer.parseInt(coefficient) + "@" + Integer.parseInt(exponent));
 							}
 							//reset values before finding the next term
 							coefficient = "";
@@ -112,11 +123,12 @@ public class team3Polynomials {
 							if (coefficient.equals("+") || coefficient.equals("")) { coefficient = "1"; }
 							if (exponent.equals("0")) {
 								coefficient = "1";
-								exponent = null;
+								exponent = "5000";
 							}
 							if (!(coefficient.equals("0"))) { 
 								System.out.println(Integer.parseInt(coefficient));
 								System.out.println(exponent);
+								list.addLast(Integer.parseInt(coefficient) + "@" + Integer.parseInt(exponent));
 							}
 							coefficient = "";
 							exponent = "";
@@ -135,10 +147,15 @@ public class team3Polynomials {
 			}
 			if (option.charAt(0) == 'r') {
 				System.out.println("added polys here");
+				Iterator<String> it = list.iterator();
+				while (it.hasNext()) {
+					System.out.println(it.next().toString());
+				}
 			}
 			System.out.println();
 		}//end while loop
+		
 		System.out.println("Have a nice day, PROGRAM TERMINATED");
 	}//end main
-
+	
 }//end class

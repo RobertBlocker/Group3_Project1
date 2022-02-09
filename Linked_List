@@ -1,14 +1,21 @@
 package team3Polynomials;
 
 import java.util.NoSuchElementException;
+import java.util.*;
+
 
 /** A doubly-linked list with iterators */
 public class Linked_List<T> implements Iterable<T> {
     /** A doubly-linked list node */
-    private class DNode {
+    private class DNode implements Comparable<T>{
         T data;
         DNode next, prev;
         DNode(T value) { data = value; }
+        
+        @Override
+        public int compareTo(T data) {
+        	return 0;
+        }
     }
 
     // Data fields

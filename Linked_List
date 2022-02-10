@@ -7,17 +7,40 @@ import java.util.*;
 /** A doubly-linked list with iterators */
 public class Linked_List<T> implements Iterable<T> {
     /** A doubly-linked list node */
-    private class DNode implements Comparable<T>{
+    private class DNode implements Comparable<DNode>{
         T data;
         DNode next, prev;
         DNode(T value) { data = value; }
         
         @Override
-        public int compareTo(T data) {
-        	return 0;
+        public int compareTo(DNode nextNode) {
+//        	int thisInt = 0;
+//        	int lengthThis = this.toString().length();	
+//        	for (int i = 0; i < lengthThis; i++) {
+//        		if (this.data.toString().charAt(i) == '@') {
+//        			for (int j = i; j < lengthThis; j++) {
+//        				thisInt += this.data.toString().charAt(i);
+//        				if (j+1 == lengthThis) { break; }
+//        			}
+//        		}
+//        	}
+        	if (this.data == "9@5000") { return 500; }
+        	else {return 200; }
+//        	int nextInt = 0;
+//        	int lengthNextNode = nextNode.toString().length();
+//        	for (int i = 0; i < lengthNextNode; i++) {
+//        		if (nextNode.data.toString().charAt(i) == '@') {
+//        			for (int j = i; j < lengthNextNode; j++) {
+//        				nextInt += nextNode.data.toString().charAt(i);
+//        				if (j+1 == lengthNextNode) { break; }
+//        			}
+//        		}
+//        	}
         }
     }
+    
 
+   
     // Data fields
     private DNode head, tail;
     private int numOfItems;
@@ -42,7 +65,15 @@ public class Linked_List<T> implements Iterable<T> {
     }
 
     // Methods
-
+    
+    public Linked_List<String> E() {
+    	Linked_List<String> combinedSortedList = new Linked_List<>();
+    	Iterator<String> it = combinedSortedList.iterator();
+    	int ee = this.head.compareTo(this.head.next);
+        String eee = Integer.toString(ee);
+    	combinedSortedList.addFirst(eee);
+    	return combinedSortedList;
+    }
     /** Returns the size of the linked list.
         @return: number of elements stored in the linked list
     */

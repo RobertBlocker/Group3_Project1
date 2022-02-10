@@ -4,12 +4,10 @@ import java.util.Scanner;
 public class team3Polynomials {
 	public static Linked_List<String> list = new Linked_List<>();
 	public static Linked_List<String> list2 = new Linked_List<>();
+	public static Linked_List<String> combinedList = new Linked_List<>();
 	
 	public static void main(String[] args) {
 		
-		
-		
-
 		System.out.println();
 	
 		String option = "e";
@@ -45,6 +43,7 @@ public class team3Polynomials {
 			
 			if (option.charAt(0) == 'a') {
 				System.out.println("Adding polynomials");
+				addPolys();
 			}
 			if (option.charAt(0) == 'r') {
 				System.out.println("added polys here");
@@ -52,10 +51,18 @@ public class team3Polynomials {
 				while (it.hasNext()) {
 					System.out.println(it.next().toString());
 				}
+				System.out.println();
 				Iterator<String> it2 = list2.iterator();
 				while (it2.hasNext()) {
 					System.out.println(it2.next().toString());
 				}
+				System.out.println();
+				Iterator<String> it3 = combinedList.iterator();
+				while (it3.hasNext()) {
+					System.out.println(it3.next().toString());
+				}
+				System.out.println();
+				sortPolys(combinedList);
 			}
 			System.out.println();
 		}//end while loop
@@ -79,6 +86,7 @@ public class team3Polynomials {
 					exponent = "5000";
 					System.out.println(Integer.parseInt(coefficient));
 					list.addLast(Integer.parseInt(coefficient) + "@" + Integer.parseInt(exponent));
+					combinedList.addLast(Integer.parseInt(coefficient) + "@" + Integer.parseInt(exponent));
 					System.out.println("5000");
 					coefficient = "";
 				}
@@ -93,6 +101,7 @@ public class team3Polynomials {
 					exponent = "5000";
 					System.out.println(Integer.parseInt(coefficient));
 					list.addLast(Integer.parseInt(coefficient) + "@" + Integer.parseInt(exponent));
+					combinedList.addLast(Integer.parseInt(coefficient) + "@" + Integer.parseInt(exponent));
 					System.out.println("5000");
 					coefficient = "";
 				}
@@ -112,6 +121,7 @@ public class team3Polynomials {
 							System.out.println(Integer.parseInt(coefficient));
 							System.out.println(exponent);
 							list.addLast(Integer.parseInt(coefficient) + "@" + Integer.parseInt(exponent));
+							combinedList.addLast(Integer.parseInt(coefficient) + "@" + Integer.parseInt(exponent));
 						}
 						coefficient = "";
 						exponent = "";
@@ -146,6 +156,7 @@ public class team3Polynomials {
 							System.out.println(Integer.parseInt(coefficient));
 							System.out.println(exponent);
 							list.addLast(Integer.parseInt(coefficient) + "@" + Integer.parseInt(exponent));
+							combinedList.addLast(Integer.parseInt(coefficient) + "@" + Integer.parseInt(exponent));
 						}
 						//reset values before finding the next term
 						coefficient = "";
@@ -164,6 +175,7 @@ public class team3Polynomials {
 							System.out.println(Integer.parseInt(coefficient));
 							System.out.println(exponent);
 							list.addLast(Integer.parseInt(coefficient) + "@" + Integer.parseInt(exponent));
+							combinedList.addLast(Integer.parseInt(coefficient) + "@" + Integer.parseInt(exponent));
 						}
 						coefficient = "";
 						exponent = "";
@@ -172,8 +184,20 @@ public class team3Polynomials {
 				}
 			}//end loop through string
 			
-     	
-     	
-     	
      }//end convertString() 
+	
+	
+	public static void sortPolys(Linked_List<String> toSortList) {
+		Iterator<String> it = toSortList.iterator();
+		
+		Linked_List<String> eResult = toSortList.E();
+		System.out.println(eResult.getFirst());
+			
+	}//end sortPolys() method
+	
+	
+	public static void addPolys() {
+			
+	}//end addPolys() method
+		
 }//end class

@@ -1,15 +1,18 @@
 package team3Polynomials;
 import java.util.Scanner;
-
 public class team3Polynomials {
 	public static Linked_List<String> list = new Linked_List<>();
 	public static Linked_List<String> list2 = new Linked_List<>();
 	public static Linked_List<String> combinedList = new Linked_List<>();
-	
+	public static Linked_List<String> combinedSortedList = new Linked_List<>();
+
 	public static void main(String[] args) {
-		
+
+
+
+
 		System.out.println();
-	
+
 		String option = "e";
 		System.out.println("WELCOME TO POLYNOMIAL ADDITION CALCULATOR");
 		System.out.println();
@@ -40,7 +43,7 @@ public class team3Polynomials {
 				poly2 = console.next();
 				convertString(poly2, list2);
 			}
-			
+
 			if (option.charAt(0) == 'a') {
 				System.out.println("Adding polynomials");
 				addPolys();
@@ -63,6 +66,11 @@ public class team3Polynomials {
 				}
 				System.out.println();
 				sortPolys(combinedList);
+				
+				Iterator<String> itS = combinedSortedList.iterator();
+				while (itS.hasNext()) {
+					System.out.println(itS.next().toString());
+				}
 			}
 			System.out.println();
 		}//end while loop
@@ -183,21 +191,31 @@ public class team3Polynomials {
 					
 				}
 			}//end loop through string
-			
+
+
+
+
      }//end convertString() 
-	
-	
+
+
 	public static void sortPolys(Linked_List<String> toSortList) {
-		Iterator<String> it = toSortList.iterator();
+
+		 combinedSortedList = toSortList.callCompare();
 		
-		Linked_List<String> eResult = toSortList.E();
-		System.out.println(eResult.getFirst());
-			
+		
+
+		
+		
+		
+		
+		
+		
+
 	}//end sortPolys() method
-	
-	
+
+
 	public static void addPolys() {
-			
+
 	}//end addPolys() method
-		
+	
 }//end class

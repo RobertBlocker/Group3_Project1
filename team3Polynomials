@@ -1,15 +1,11 @@
 package team3Polynomials;
 import java.util.Scanner;
+
 public class team3Polynomials {
-	public static Linked_List<String> list = new Linked_List<>();
-	public static Linked_List<String> list2 = new Linked_List<>();
-	public static Linked_List<String> combinedList = new Linked_List<>();
 	public static Linked_List<String> combinedSortedList = new Linked_List<>();
+	public static Linked_List<Term> termList = new Linked_List<>();
 
 	public static void main(String[] args) {
-
-
-
 
 		System.out.println();
 
@@ -36,12 +32,12 @@ public class team3Polynomials {
 			if (option.charAt(0) == 'f') {
 				System.out.println("Enter first polynomial: ");
 				poly1 = console.next();
-				convertString(poly1, list);
+				convertString(poly1);
 			}
 			if (option.charAt(0) == 's') {
 				System.out.println("Enter second polynomial: ");
 				poly2 = console.next();
-				convertString(poly2, list2);
+				convertString(poly2);
 			}
 
 			if (option.charAt(0) == 'a') {
@@ -50,27 +46,21 @@ public class team3Polynomials {
 			}
 			if (option.charAt(0) == 'r') {
 				System.out.println("added polys here");
-				Iterator<String> it = list.iterator();
-				while (it.hasNext()) {
-					System.out.println(it.next().toString());
-				}
+
+				
 				System.out.println();
-				Iterator<String> it2 = list2.iterator();
-				while (it2.hasNext()) {
-					System.out.println(it2.next().toString());
+				Iterator<Term> it4 = termList.iterator();
+				while (it4.hasNext()) {
+					System.out.println(it4.next().toString());
 				}
+				
 				System.out.println();
-				Iterator<String> it3 = combinedList.iterator();
+				combinedSortedList = sortPolys();
+				Iterator<String> it3 = combinedSortedList.iterator();
 				while (it3.hasNext()) {
 					System.out.println(it3.next().toString());
 				}
-				System.out.println();
-				sortPolys(combinedList);
 				
-				Iterator<String> itS = combinedSortedList.iterator();
-				while (itS.hasNext()) {
-					System.out.println(itS.next().toString());
-				}
 			}
 			System.out.println();
 		}//end while loop
@@ -78,10 +68,8 @@ public class team3Polynomials {
 		System.out.println("Have a nice day, PROGRAM TERMINATED");
 	}//end main
 	
-	public static void convertString(String poly, Linked_List<String> list) {
+	public static void convertString(String poly) {
 		 
-     	
-     	
      	boolean minus = true;
 			String exponent = "";
 			String coefficient = "";
@@ -93,8 +81,9 @@ public class team3Polynomials {
 					if (coefficient.equals("+") || coefficient.equals("")) { coefficient = "1"; }
 					exponent = "5000";
 					System.out.println(Integer.parseInt(coefficient));
-					list.addLast(Integer.parseInt(coefficient) + "@" + Integer.parseInt(exponent));
-					combinedList.addLast(Integer.parseInt(coefficient) + "@" + Integer.parseInt(exponent));
+					Term newTerm = new Term(Integer.parseInt(coefficient), Integer.parseInt(exponent));
+					termList.addLast(newTerm);
+					
 					System.out.println("5000");
 					coefficient = "";
 				}
@@ -108,8 +97,8 @@ public class team3Polynomials {
 					if (coefficient.equals("+") || coefficient.equals("")) { coefficient = "1"; }
 					exponent = "5000";
 					System.out.println(Integer.parseInt(coefficient));
-					list.addLast(Integer.parseInt(coefficient) + "@" + Integer.parseInt(exponent));
-					combinedList.addLast(Integer.parseInt(coefficient) + "@" + Integer.parseInt(exponent));
+					Term newTerm = new Term(Integer.parseInt(coefficient), Integer.parseInt(exponent));
+					termList.addLast(newTerm);
 					System.out.println("5000");
 					coefficient = "";
 				}
@@ -128,8 +117,9 @@ public class team3Polynomials {
 						if (!(coefficient.equals("0"))) { 
 							System.out.println(Integer.parseInt(coefficient));
 							System.out.println(exponent);
-							list.addLast(Integer.parseInt(coefficient) + "@" + Integer.parseInt(exponent));
-							combinedList.addLast(Integer.parseInt(coefficient) + "@" + Integer.parseInt(exponent));
+			
+							Term newTerm = new Term(Integer.parseInt(coefficient), Integer.parseInt(exponent));
+							termList.addLast(newTerm);
 						}
 						coefficient = "";
 						exponent = "";
@@ -163,8 +153,9 @@ public class team3Polynomials {
 						if (!(coefficient.equals("0"))) { 
 							System.out.println(Integer.parseInt(coefficient));
 							System.out.println(exponent);
-							list.addLast(Integer.parseInt(coefficient) + "@" + Integer.parseInt(exponent));
-							combinedList.addLast(Integer.parseInt(coefficient) + "@" + Integer.parseInt(exponent));
+				
+							Term newTerm = new Term(Integer.parseInt(coefficient), Integer.parseInt(exponent));
+							termList.addLast(newTerm);
 						}
 						//reset values before finding the next term
 						coefficient = "";
@@ -182,8 +173,9 @@ public class team3Polynomials {
 						if (!(coefficient.equals("0"))) { 
 							System.out.println(Integer.parseInt(coefficient));
 							System.out.println(exponent);
-							list.addLast(Integer.parseInt(coefficient) + "@" + Integer.parseInt(exponent));
-							combinedList.addLast(Integer.parseInt(coefficient) + "@" + Integer.parseInt(exponent));
+							
+							Term newTerm = new Term(Integer.parseInt(coefficient), Integer.parseInt(exponent));
+							termList.addLast(newTerm);
 						}
 						coefficient = "";
 						exponent = "";
@@ -191,26 +183,19 @@ public class team3Polynomials {
 					
 				}
 			}//end loop through string
-
-
-
-
      }//end convertString() 
 
 
-	public static void sortPolys(Linked_List<String> toSortList) {
-
-		 combinedSortedList = toSortList.callCompare();
+	public static Linked_List<String> sortPolys() {
+		Linked_List<String> returnList = new Linked_List<>();
+		 
+		Iterator<Term> it3 = termList.iterator();
+		while (it3.hasNext()) {
+			System.out.println(it3.next().compareTo(it3.next()));
+	
+		}
 		
-		
-
-		
-		
-		
-		
-		
-		
-
+		return returnList;
 	}//end sortPolys() method
 
 
@@ -218,4 +203,4 @@ public class team3Polynomials {
 
 	}//end addPolys() method
 	
-}//end class
+}//end team3Polynomials class

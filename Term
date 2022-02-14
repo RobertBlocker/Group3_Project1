@@ -1,0 +1,27 @@
+package team3Polynomials;
+
+public class Term implements Comparable<Term> {
+
+	public Integer coefficient;
+    public Integer exponent;
+    
+    
+    //A constructor!
+    public Term(int c, int x) {
+        this.coefficient = c;
+        this.exponent = x;
+    }
+	
+    @Override
+    public int compareTo(Term term2) {
+    	int answer = 0;
+    	
+    	return answer;
+    }
+    
+    @Override
+    public String toString() {
+    	return this.coefficient + " " + this.exponent;
+    }
+	
+}//end Term

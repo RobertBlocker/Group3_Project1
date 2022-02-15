@@ -6,63 +6,12 @@ import java.util.NoSuchElementException;
 /** A doubly-linked list with iterators */
 public class Linked_List<Term> implements Iterable<Term> {
     /** A doubly-linked list node */
-    private class DNode implements Comparable<DNode>{
+    private class DNode {
     	Term data;
         DNode next, prev; 
         DNode(Term value) { data = value; }
-        
-        @Override
-        public int compareTo(DNode nextNode) {
-        	String thisExp = "";//exponent of current node
-        	int thisInt = 0;
-        	int lengthThis = this.data.toString().length();	//length of the node's string
-        	int secInt = 0;
-        	for (int i = 0; i < lengthThis; i++) { //iterate through lengthThis
-        			if (this.data.toString().charAt(i) == '@') {
-        				for (int j = i; j < lengthThis; j++) { //This for loop is to iterate through the last part of the string or anything behind the @ sign which would be the exponent, we do this since we don't know if the exponent is single digit or more than one digit
-        					thisExp += this.data.toString().charAt(j);//this line adds the exponents individual characters if necessary e.x. if it is 23, the first time it goes around it adds 2 then 3 the next time
-        						if (j+1 == lengthThis) { break; }
-      			}
-       		}
-       	}
-       
-        	thisInt = Integer.parseInt(thisExp);//converts the exponent we captures after the @ sign from above into an integer and stores it so we can compare them at the end of compareTo()
-        	
-        	
-//        	if (this.data == "9@5000") { return 500; } Used for testing
-//        	else {return 200; }
-        	
-        	
-        	String nextExp = "";//Same code as before except using a new variable nextExp for our exponent and a new variable for the length of the next Node
-        	int lengthNextNode = nextNode.data.toString().length();
-       	for (int i = 0; i < lengthNextNode; i++) {
-        		if (nextNode.data.toString().charAt(i) == '@') {
-        			for (int j = i; j < lengthNextNode; j++) {
-        				nextExp += nextNode.data.toString().charAt(j);
-        				if (j+1 == lengthNextNode) { break; }
-       			}
-      		}
-       	}
-		
-       	secInt = Integer.parseInt(nextExp);//same code from above except setting it equal to secInt to be used below
-       	
-       	
-       	
-       	if (thisInt < secInt) {//returns -1 if the node passed to compareTo is less than the node passed outside of the compareTo
-       		return -1;
-       	}//end if
-       	else if (thisInt > secInt) {//returns 1 if if the node passed to compareTo is more than the node passed outside of the compareTo
-       		return 1;
-       	}//end else if
-       	else {//returns 0 if both nodes passed to compareTo() are equal
-       		return 0;
-       	}//end else
-       	
-        }//end compareTo()
-    }//end DNode
+    }
     
-
-   
     // Data fields
     private DNode head, tail;
     private int numOfItems;
@@ -88,47 +37,6 @@ public class Linked_List<Term> implements Iterable<Term> {
 
     // Methods
     
-//    public Linked_List<String> callCompare() {
-//    	Linked_List<String> combinedSort = new Linked_List<>();
-//    	Iterator<String> it = combinedSort.iterator();
-//    	String compareResult = ""; 
-//    	
-//    	
-//    	while (it.hasNext()) {
-//    		compareResult = it.next();
-//    		if (it.next().compareTo(compareResult) == -1) {
-//    			combinedSort.addLast(it.next().toString());
-//    		}
-//    		else if (it.next().compareTo(compareResult) == 1) {
-//    			combinedSort.addLast(compareResult.toString());
-//    		}
-//    		else {
-//    			combinedSort.addLast(compareResult.toString());
-//    			combinedSort.addLast(compareResult.toString());
-//    		}
-//    	
-////    	while (it.hasNext()) {
-////    		compareResult = it.next();
-////    		if (it.next().compareTo(compareResult) == -1) {
-////    			combinedSort.addLast(it.next().toString());
-////    		}
-////    		else if (it.next().compareTo(compareResult) == 1) {
-////    			combinedSort.addLast(compareResult.toString());
-////    		}
-////    		else {
-////    			combinedSort.addLast(compareResult.toString());
-////    			combinedSort.addLast(compareResult.toString());
-////    		}
-//    		
-//    		
-//    		
-//    	}//end while loop 
-//    	
-//    	
-//    	
-//    	
-//    	return combinedSort;
-//    }
     /** Returns the size of the linked list.
         @return: number of elements stored in the linked list
     */
@@ -265,6 +173,11 @@ public class Linked_List<Term> implements Iterable<Term> {
                 nextNode = nextNode.next;
                 return value;
             }  // Time complexity: O(1)
+            
+            /** Returns the iterator's next element without moving the list forward, required for sortPolys()
+            @return: iterator's nextNode.data
+            @throws NoSuchElementException: there is not a next element at current iterator position.
+            */
             @Override
             public Term getNext() {
                 if (!hasNext()) { throw new NoSuchElementException(); }

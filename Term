@@ -29,8 +29,7 @@ public class Term implements Comparable<Term> {
     	
     	return answer;
 
-    }//end compareTo()return answer;
-    }
+    }//end compareTo()
     
     @Override
     public String toString() {

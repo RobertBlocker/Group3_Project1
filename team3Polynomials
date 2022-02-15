@@ -1,8 +1,7 @@
 package team3Polynomials;
 import java.util.Scanner;
-
 public class team3Polynomials {
-	public static Linked_List<String> combinedSortedList = new Linked_List<>();
+	public static Linked_List<Term> combinedSortedList = new Linked_List<>();
 	public static Linked_List<Term> termList = new Linked_List<>();
 
 	public static void main(String[] args) {
@@ -56,7 +55,7 @@ public class team3Polynomials {
 				
 				System.out.println();
 				combinedSortedList = sortPolys();
-				Iterator<String> it3 = combinedSortedList.iterator();
+				Iterator<Term> it3 = combinedSortedList.iterator();
 				while (it3.hasNext()) {
 					System.out.println(it3.next().toString());
 				}
@@ -186,13 +185,14 @@ public class team3Polynomials {
      }//end convertString() 
 
 
-	public static Linked_List<String> sortPolys() {
-		Linked_List<String> returnList = new Linked_List<>();
-		 
+	public static Linked_List<Term> sortPolys() {
+		Linked_List<Term> returnList = new Linked_List<>();
+		
 		Iterator<Term> it3 = termList.iterator();
+
 		while (it3.hasNext()) {
-			System.out.println(it3.next().compareTo(it3.next()));
-	
+			Term temp = it3.next();
+			if (it3.hasNext()) { System.out.println(temp.compareTo(it3.getNext())); }
 		}
 		
 		return returnList;
@@ -203,4 +203,4 @@ public class team3Polynomials {
 
 	}//end addPolys() method
 	
-}//end team3Polynomials class
+}//end class

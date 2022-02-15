@@ -12,11 +12,24 @@ public class Term implements Comparable<Term> {
         this.exponent = x;
     }
 	
+    /**
+     * compares exponents
+     * @return: {1} if first exponent is larger than the second exponent; {-1} if second exponent is larger than the first exponent
+     */
+    public int getExponent() {return exponent;}
+	
     @Override
-    public int compareTo(Term term2) {
+    public int compareTo(Term term) {
     	int answer = 0;
+    	if(term.exponent > this.getExponent()) {
+    		answer = 1;
+    	}else {
+    		answer = -1;
+    	}
     	
     	return answer;
+
+    }//end compareTo()return answer;
     }
     
     @Override

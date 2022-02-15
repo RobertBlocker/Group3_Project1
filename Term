@@ -11,10 +11,15 @@ public class Term implements Comparable<Term> {
         this.coefficient = c;
         this.exponent = x;
     }
+    
 	
+ /**
+     * @return: coefficient variable
+     */
+    public int getCoefficient() {return coefficient;}
+    
     /**
-     * compares exponents
-     * @return: {1} if first exponent is larger than the second exponent; {-1} if second exponent is larger than the first exponent
+     * @return: exponent variable
      */
     public int getExponent() {return exponent;}
 	

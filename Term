@@ -36,9 +36,52 @@ public class Term implements Comparable<Term> {
 
     }//end compareTo()
     
+   /**
+     * prints polynomials in mathematical format
+     */
     @Override
     public String toString() {
-    	return this.coefficient + " " + this.exponent;
+        final String sign = getSign (coefficient);// calls getSign()
+        final String number = getNumber (coefficient);// calls getNumber()
+        final String exponentStr = getExponentStr (coefficient, exponent);// calls getExponentStr()
+
+        return String.format ("%s%s%s",sign, number, exponentStr);// returns a formatted string 
+    }
+    
+    /**
+     * Determines if the polynomial needs a {x^} or just {x}
+     * @param coefficient: number in front of the x
+     * @param exponent: number to the upper right of the x
+     * @return:{"x^"} if exponent are not 0 or 1;{"x"} otherwise;{""} if exponent or coefficient are 0 or 1
+     */
+    private String getExponentStr( int coefficient,  int exponent) {
+        if (coefficient == 0 || exponent == 0) {
+            return "";
+        }
+        if (exponent == 1) {
+            return "x";
+        }
+        return "x^" + exponent;
+    }
+    
+    /**
+     * converts int value to string
+     * @param value: variable to be converted
+     * @return: {""} if value is equal to 1; converts value to string otherwise 
+     */
+    private String getNumber( int value) {
+        final int newValue = value;
+
+        return newValue == 1 ? "" : Integer.toString (newValue);
+    }
+    
+    /**
+     * Test for negative numbers
+     * @param value: to be tested
+     * @return: {"-"} if value is less than 0:{""} otherwise
+     */
+    private String getSign(final int value) {
+        return value < 0 ? "-" : "";
     }
 	
 }//end Term

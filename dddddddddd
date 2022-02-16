@@ -1,0 +1,45 @@
+/** This is the most important method, takes the list from convertString and 
+	 * uses Term's compareTo() to make a copy of the list
+	 * this does BOTH the sorting and adding of polynomials
+	 * returns the new list
+	 */
+	public static Linked_List<Term> sortPolys() {
+		Linked_List<Term> returnList = new Linked_List<>();
+		
+		//this first iterator iterates through the list sortPolys returns,
+		//it will send each Term to the nested while loop, which finds where to put it in the new list
+		Iterator<Term> it = termList.iterator();
+		//before the loop, add the first term, start from the 2nd term
+		returnList.addFirst(it.next());
+		while (it.hasNext()) {
+			//grabs the Term to be inserted and moves to the next term for next loop
+			Term temp = it.next();
+			
+			//this iterator iterates through the new list inside this while loop until it finds where to put the current Term
+			Iterator<Term> it2 = returnList.iterator();
+			while (it2.hasNext()) {
+				int result = temp.compareTo(it2.next());
+				//if result is 1, temp is greater than current Term in new list
+				if (result == 1) {
+					it2.previous();
+					it2.add(temp);
+					break;
+				}
+				//if result is -1, temp is less than
+				else if (result == -1) {
+					if (!it2.hasNext()) { returnList.addLast(temp); }
+				}
+				//else, they are the same exponent, so make a new Term obj with their coefficients added and 
+				//setPrevious to it
+				else {
+				    Term p = new Term(it2.previous().coefficient + temp.coefficient, temp.exponent);
+				    it2.next();
+				    it2.setPrevious(p);
+					break;
+				} 
+			}
+		}//end while
+
+		
+		return returnList;
+	}//end sortPolys() method

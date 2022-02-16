@@ -25,7 +25,8 @@ public class Term implements Comparable<Term> {
 	
     @Override
     public int compareTo(Term term) {
-    
+    	if (this.exponent == 5000) { this.exponent = 0; }
+    	if (term.exponent == 5000) { term.exponent = 0; }
     	
 	
     	int answer = 0;

@@ -25,6 +25,9 @@ public class Term implements Comparable<Term> {
 	
     @Override
     public int compareTo(Term term) {
+    
+    	
+	
     	int answer = 0;
     	if(term.exponent > this.getExponent()) {
     		answer = 1;
@@ -41,11 +44,11 @@ public class Term implements Comparable<Term> {
      */
     @Override
     public String toString() {
-        final String sign = getSign (coefficient);// calls getSign()
+      
         final String number = getNumber (coefficient);// calls getNumber()
         final String exponentStr = getExponentStr (coefficient, exponent);// calls getExponentStr()
 
-        return String.format ("%s%s%s",sign, number, exponentStr);// returns a formatted string 
+        return String.format ("%s%s", number, exponentStr);// returns a formatted string 
     }
     
     /**
@@ -75,13 +78,6 @@ public class Term implements Comparable<Term> {
         return newValue == 1 ? "" : Integer.toString (newValue);
     }
     
-    /**
-     * Test for negative numbers
-     * @param value: to be tested
-     * @return: {"-"} if value is less than 0:{""} otherwise
-     */
-    private String getSign(final int value) {
-        return value < 0 ? "-" : "";
-    }
+   
 	
 }//end Term
